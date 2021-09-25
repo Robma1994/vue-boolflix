@@ -1,22 +1,44 @@
 <template>
-<div>
-  <li v-for="(ele, index) in listMain" :key="index">
-    {{ ele.title }}
-    {{ ele.original_title }} 
-    {{ ele.original_language }} 
-    {{ ele.vote_count }}
-  </li>
-</div>
+  <div>
+    <div class="container-large">
+      <div class="container-small">
+        <SingleCard v-for="(ele, index) in listMain" :key="index"
+          :elemento = ele
+        />
+      </div>
+    </div>
+    
+  </div>
 </template>
 
 <script>
+import SingleCard from './SingleCard.vue'
 export default {
   name: 'Main',
+  components: {
+    SingleCard
+  },
   props: ['listMain']
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../style/variables';
+.container-large {
+  width: 100%;
+  height: 680px;
+  background-color: $backgroundMain;
+
+    .container-small{
+      width: 1300px;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+
 
 </style>

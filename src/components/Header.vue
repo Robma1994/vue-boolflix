@@ -5,7 +5,7 @@
   </div>
   <form>
       <input v-model="researchUser" type="text" placeholder="Research movies">
-      <button @click.prevent="$emit('clickBtn', researchUser)">Research Film</button>
+      <button @click.prevent="$emit('clickBtn', check())">Research Film</button>
    </form>
 </div>
   
@@ -17,6 +17,16 @@ export default {
   data() {
     return {
       researchUser: ''
+    }
+  },
+  methods: {
+    check() {
+      if(this.researchUser === '' ) {
+        alert('Inserisci nome');
+      } 
+      else {
+        return this.researchUser
+      }
     }
   }
 }
