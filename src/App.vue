@@ -19,26 +19,27 @@ export default {
   data() {
     return {
       listGeners: [],
-      apiNetflix: 'https://api.themoviedb.org/3/search/movie?api_key=cccfd668f87b751c8d927b2426c90b75',
+      apiNetflix: 'https://api.themoviedb.org/3/search/',
+      //what: movie,tv,etc
+      ApiKey:'?api_key=cccfd668f87b751c8d927b2426c90b75',
       query: '&query='
     }
   },
   created() {
-    this.start()
+    this.research()
   },
   methods: {
-    start() {
-      axios
-            .get(this.apiNetflix + this.query + 'all')
+    research(writeUser) {
+        axios
+            .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + writeUser)
             .then(res => {
               this.listGeners = res.data.results;
             })
-    },
-    research(writeUser) {
         axios
-            .get(this.apiNetflix + this.query + writeUser)
+            .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
             .then(res => {
               this.listGeners = res.data.results;
+              console.log(this.listGeners)
             })
       }
     }

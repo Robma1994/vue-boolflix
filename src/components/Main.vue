@@ -27,15 +27,15 @@ export default {
 @import '../style/variables';
 .container-large {
   width: 100%;
-  height: 680px;
+  height: 2000px;
   background-color: $backgroundMain;
 
     .container-small{
-      width: 1300px;
-      height: 100%;
+      width: 1250px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
+      padding: 65px 0 65px 0;
     }
 }
 
