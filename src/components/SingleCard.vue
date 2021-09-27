@@ -1,15 +1,20 @@
 <template>
 <div>
-  <ul class="singleCardContainer">
-   
-    <li>
-      {{ elemento.title }} 
-      {{ elemento.original_title }} 
-      {{ elemento.original_language }}
-      {{ elemento.vote_count }}
-      <img class="size-img" :src=" require(`../assets/bandiera-${elemento.original_language}.png`) " alt=""> 
-    </li>
-  </ul>
+  <div class="singleCardContainer">
+    <div class="frontCard">
+     <img :src="`https://image.tmdb.org/t/p/w342/${elemento.poster_path}`" alt="" class="sizeImg"> 
+      <div class="retroCard" >
+        <h1> {{ elemento.title }} </h1>
+        <h2> {{ elemento.original_title }} </h2>
+        <h3> {{ elemento.original_language }} </h3>
+        <p> {{ elemento.vote_count }} </p>
+        <p> {{ elemento.overview }} </p>
+        <img v-if="flagExists(elemento.original_language)" class="size-img" :src="require(`../assets/bandiera-${elemento.original_language}.png`)" alt="">
+      </div>
+    </div>
+      
+    
+  </div>
   
 </div>
 </template>
@@ -18,17 +23,41 @@
 
 export default {
   name: 'SingleCard',
-  props: ['elemento']
+  props: ['elemento'],
+  methods: {
+    flagExists(lang) {
+      if(require(`../assets/bandiera-${lang}.png`))
+        return true;
+      return false;
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../style/variables';
 .singleCardContainer {
-  background-color: white;
-  border: 1px solid black;
-  width: 250px;
-  height: 180px;
+  margin: 10px 10px;
+  
+    .frontCard {
+      height: 420px;
+      width: 300px;
+      
+      
+      .retroCard {
+        height: 100%;
+        background-color: $colorRetroCard;
+        display: none;
+        overflow-y: auto;
+      }
+       
+        .sizeImg {
+          height: 100%;
+          width: 100%;
+        }
+
+    }
 
     li {
       list-style-type: none;
@@ -36,6 +65,12 @@ export default {
     .size-img {
       width: 20px;
     }
-    
+    .frontCard:hover > img{
+        display: none
+    }
+
+    .frontCard:hover .retroCard {
+      display: block;
+    }
 }
 </style>

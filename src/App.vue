@@ -26,9 +26,16 @@ export default {
     }
   },
   created() {
-    this.research()
+    this.start()
   },
   methods: {
+    start() {
+      axios
+            .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + 'all')
+            .then(res => {
+              this.listGeners = res.data.results;
+            })
+    },
     research(writeUser) {
         axios
             .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + writeUser)
@@ -36,11 +43,11 @@ export default {
               this.listGeners = res.data.results;
             })
         axios
-            .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
-            .then(res => {
-              this.listGeners = res.data.results;
-              console.log(this.listGeners)
-            })
+        .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
+        .then(res => {
+          this.listGeners = res.data.results;
+          console.log(this.listGeners)
+        })
       }
     }
     
@@ -50,5 +57,4 @@ export default {
 
 <style lang="scss">
 @import './style/generals';
-
 </style>
