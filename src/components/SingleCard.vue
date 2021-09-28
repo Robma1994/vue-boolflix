@@ -4,12 +4,15 @@
     <div class="frontCard">
      <img :src="`https://image.tmdb.org/t/p/w342/${elemento.poster_path}`" alt="" class="sizeImg"> 
       <div class="retroCard" >
-        <h1> {{ elemento.title }} </h1>
-        <h2> {{ elemento.original_title }} </h2>
-        <h3> {{ elemento.original_language }} </h3>
-        <p> {{ elemento.vote_count }} </p>
-        <p> {{ elemento.overview }} </p>
-        <img v-if="flagExists(elemento.original_language)" class="size-img" :src="require(`../assets/bandiera-${elemento.original_language}.png`)" alt="">
+        <div>
+          <h1> {{ elemento.title ? elemento.title : elemento.name }} </h1>
+          <h2> {{ elemento.original_title }} </h2>
+          <h3> {{ elemento.original_language }} </h3>
+          <p> {{ elemento.vote_count }} </p>
+          <p> {{ elemento.overview }} </p>
+          <img v-if="flagExists(elemento.original_language)" class="size-img" :src="require(`../assets/bandiera-${elemento.original_language}.png`)" alt="">
+        </div>
+        
       </div>
     </div>
       

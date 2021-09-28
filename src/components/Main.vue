@@ -2,10 +2,15 @@
   <div>
     <div class="container-large">
       <div class="container-small">
-        <SingleCard v-for="(ele, index) in listMain" :key="index"
-          :elemento = ele
+        <SingleCard 
+        v-for="ele in listMain" :key="ele.id" :elemento = ele
+        />
+
+        <SingleCard 
+        v-for="ele in series" :key="ele.id" :elemento = ele
         />
       </div>
+      
     </div>
     
   </div>
@@ -18,7 +23,7 @@ export default {
   components: {
     SingleCard
   },
-  props: ['listMain']
+  props: ['listMain', 'series']
 }
 </script>
 

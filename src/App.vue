@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header @clickBtn='research' />
-    <Main :listMain = listGeners />
+    <Main 
+      :listMain = listMovies 
+      :series = listSeries
+    />
   </div>
 </template>
 
@@ -18,24 +21,15 @@ export default {
   },
   data() {
     return {
-      listGeners: [],
+      listMovies: [],
+      listSeries: [],
       apiNetflix: 'https://api.themoviedb.org/3/search/',
       //what: movie,tv,etc
       ApiKey:'?api_key=cccfd668f87b751c8d927b2426c90b75',
       query: '&query='
     }
   },
-  created() {
-    this.start()
-  },
   methods: {
-    start() {
-      axios
-            .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + 'all')
-            .then(res => {
-              this.listGeners = res.data.results;
-            })
-    },
     research(writeUser) {
         axios
             .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + writeUser)
@@ -43,11 +37,10 @@ export default {
               this.listGeners = res.data.results;
             })
         axios
-        .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
-        .then(res => {
-          this.listGeners = res.data.results;
-          console.log(this.listGeners)
-        })
+          .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
+          .then(res => {
+            this.listSeries = res.data.results;
+          })
       }
     }
     

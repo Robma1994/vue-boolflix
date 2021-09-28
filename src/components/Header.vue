@@ -22,10 +22,10 @@ export default {
   methods: {
     check() {
       if(this.researchUser === '' ) {
-        alert('Inserisci nome');
+        return alert('Inserisci nome');
       } 
-      else {
-        return this.researchUser
+      else if(this.researchUser != 'undefined') {
+       return this.researchUser
       }
     }
   }
