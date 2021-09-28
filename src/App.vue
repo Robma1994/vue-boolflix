@@ -32,10 +32,10 @@ export default {
   methods: {
     research(writeUser) {
         axios
-            .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + writeUser)
-            .then(res => {
-              this.listGeners = res.data.results;
-            })
+          .get(this.apiNetflix + 'movie' + this.ApiKey + this.query + writeUser)
+          .then(res => {
+            this.listGeners = res.data.results;
+          })
         axios
           .get(this.apiNetflix + 'tv' + this.ApiKey + this.query + writeUser)
           .then(res => {

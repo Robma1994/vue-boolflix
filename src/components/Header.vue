@@ -4,7 +4,7 @@
     <h1>BoolFlix</h1>
   </div>
   <form>
-      <input v-model="researchUser" type="text" placeholder="Research movies">
+      <input v-model="researchUser" type="text" placeholder="Research movies" @keyup="$emit('clickBtn', researchUser)"> 
       <button @click.prevent="$emit('clickBtn', check())">Research Film</button>
    </form>
 </div>
