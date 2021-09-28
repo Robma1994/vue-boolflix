@@ -64,7 +64,8 @@ export default {
 .singleCardContainer {
   margin: 10px 10px;
   
-    .frontCard {
+    .frontCard { 
+      position: relative;
       height: 420px;
       width: 300px;
       
@@ -79,23 +80,25 @@ export default {
     }
 
     .retroCard {
-        height: 100%;
-        background-color: $colorRetroCard;
-        display: none;
+        position: absolute;
+        bottom: 0;
+        height: 0;
+        width: 100%;
+        background-color: rgba($color: $colorRetroCard, $alpha: 0.2);
         overflow-y: auto;
+        transition: height 2s, background-color 1s;
 
+      
         .size-img {
           width: 20px;
         }
     }
     
 
-    .frontCard:hover > img{
-        display: none
-    }
-
     .frontCard:hover .retroCard {
-      display: block;
+     display: block;
+     height: 100%;
+     background-color: $colorRetroCard;
     }
 }
 </style>
